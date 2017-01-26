@@ -1,0 +1,5 @@
+<ul ng-repeat="car in vm.cars">
+  <li>{{car.make}}, {{car.model}} <a href="/editcar/{{car._id}}">EDIT</a> <a href="#" ng-click="vm.remove(car._id)">delete</a></li>
+</ul>
+
+<a href="/addcar">ADD CAR</a>
