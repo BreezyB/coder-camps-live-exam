@@ -5,15 +5,29 @@ import * as logger from 'morgan';
 import * as cookieParser from 'cookie-parser';
 import * as bodyParser from 'body-parser';
 import * as ejs from 'ejs';
+import * as mongoose from 'mongoose';
+let passport = require("passport");
+
 
 
 import routes from './routes/index';
-import users from './routes/users';
-import cars from './api/cars';
+//import users from './routes/usersRoutes';
+import sites from './api/sites'
+import books from './api/books';
 import Database from './db';
+
 
 let app = express();
 Database.connect();
+
+//second user password for users/passwords
+require('./models/user');
+require('./config/passport');
+app.use(passport.initialize());
+mongoose.connect("mongodb://user1:eb0811@ds153179.mlab.com:53179/user").then(() => {
+  console.log("Mongoose connected!");
+
+});
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -30,8 +44,12 @@ app.use('/ngApp', express.static(path.join(__dirname, 'ngApp')));
 app.use('/api', express.static(path.join(__dirname, 'api')));
 
 app.use('/', routes);
-app.use('/users', users);
-app.use('/api/cars', cars);
+//app.use('/userRoutes/api/', users);
+app.use('/api/books', books);
+app.use('/api/sites', sites);
+//let userRoutes = require('./routes/userRoutes')
+//app.use('/userRoutes/api', users);
+
 
 // redirect 404 to home for the sake of AngularJS client-side routes
 app.get('/*', function(req, res, next) {

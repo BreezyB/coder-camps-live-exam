@@ -5,22 +5,28 @@
   <title>myapp</title>
   <meta charset="utf-8">
   <base href="/" />
+
   <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="/ngApp/css/site.css"/>
+  <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
 </head>
 
 <body>
   <div class="container">
-        <h1>myapp</h1>
-        <div>
-          <a href="/">Home</a> /
-          <a href="/about">About</a>
-        </div>
-        <hr />
-        
+    <div class='header lucky'>
+        <h1>Book Finder</h1>
+          <div class="row">
+            <div class="col-xs-3"><a href="/">Home</a></div>
+            <div class="col-xs-3"><a href="/login">Log In</a>/<a href="/register">Register</a></div>
+            <div class="col-xs-3"><a href="/addbook">Drop off a book</a></div>
+            <div class="col-xs-3"><a href="/addsite">Create a New Drop Site</a></div>
+          </div>
+    </div>
+
+
         <ui-view></ui-view>
   </div>
-
+  <script src="https://use.fontawesome.com/4b95e785ab.js"></script>
   <script src="/bower_components/angular/angular.min.js"></script>
   <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script src="/bower_components/angular-resource/angular-resource.min.js"></script>

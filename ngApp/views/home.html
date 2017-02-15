@@ -1,5 +1,29 @@
-<ul ng-repeat="car in vm.cars">
-  <li>{{car.make}}, {{car.model}} <a href="/editcar/{{car._id}}">EDIT</a> <a href="#" ng-click="vm.remove(car._id)">delete</a></li>
-</ul>
+<br />
+<br />
+<div class="row">
+  <div class="col-md-5 col-md-offset-4">
+<span class='lucky'>List Books by location</span>
+<br />
+<table class="table table-striped table-bordered table-hover table-condensed">
+            <tr ng-repeat="site in vm.sites ">
+                <td>{{site.name}}</td>
+                <td>{{site.city}}</td>
+                <td>{{site.state}}</td>
+                <td><a href="">Browse Drop Site</a></td>
+            </tr>
+        </table>
 
-<a href="/addcar">ADD CAR</a>
+        <br />
+        <br />
+
+<span class='lucky'>Or Broswe all Books:</span>
+<br />
+<table class="table table-striped table-bordered table-hover table-condensed">
+            <tr ng-repeat="book in vm.books ">
+                <td>{{book.author}}</td>
+                <td>{{book.title}}</td>
+                <td><a href=""Browse Drop Site</a></td>
+            </tr>
+        </table>
+    </div>
+</div>

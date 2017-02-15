@@ -1,42 +1,98 @@
 namespace myapp.Controllers {
 
     export class HomeController {
-        public cars;
-
-        public remove(id){
-          this.carService.remove(id).then(()=> {
-            this.cars= this.carService.list();
+        public books;
+        public sites;
+        public book;
+        public site;
+        public removeBook(id){
+          this.bookService.remove(id).then(()=> {
+            this.books= this.bookService.list();
           })
         }
 
-        constructor(private carService){
-          this.cars = this.carService.list();
+        public removeSite(id){
+          this.siteService.remove(id).then(()=> {
+            this.sites= this.siteService.list();
+          })
+        }
+
+        constructor(private bookService, private siteService, private $stateParams, private $state ){
+          this.books = this.bookService.list();
+          this.sites = this.siteService.list();
+          let bookId = $stateParams['id'];
+          this.book = bookService.get(bookId);
+          let siteId = $stateParams['id'];
+          this.site = siteService.get(siteId);
         }
     }
 
 
-    export class AddCarController {
-        public car
+    export class AddBookController {
+        public book;
+        public sites;
+        public id;
+        public pickSite(id){
+          id =this.id;
+        }
+        public saveBook(){
 
-        public saveCar(){
-         this.carService.save(this.car);
+         this.bookService.save(this.book);
         }
 
-        constructor(private carService){
+        constructor(private bookService, private siteService){
+          this.sites = this.siteService.list();
+
+        }
+    }
+
+    export class EditBookController {
+        public book;
+
+        public saveBook(){
+          this.bookService.save(this.book);
+        }
+        constructor(private bookService, private $stateParams, private $state){
+          let bookId = $stateParams['id'];
+          this.book = bookService.get(bookId);
+        }
+    }
+
+    export class AddSiteController {
+        public site
+
+        public saveSite(){
+         this.siteService.save(this.site);
+        }
+
+        constructor(private siteService){
 
         }
     }
 
-    export class EditCarController {
-        public car;
+    export class UserController {
+      public user;
 
-        public saveCar(){
-          this.carService.save(this.car);
-        }
-        constructor(private carService, private $stateParams, private $state){
-          let carId = $stateParams['id'];
-          this.car = carService.get(carId);
-        }
+      public saveUser(){
+        this.userService.save(this.user);
+      }
+
+      constructor(private userService, private $stateParams, private $state){
+        let userId = $stateParams['id'];
+      }
     }
+
+    export class LogInController {
+      public user;
+
+      public saveUser(){
+        this.userService.save(this.user);
+      }
+
+      constructor(private userService, private $stateParams, private $state){
+        let userId = $stateParams['id'];
+      }
+    }
+
 
 }
